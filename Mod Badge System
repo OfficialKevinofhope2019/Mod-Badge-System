@@ -1,0 +1,62 @@
+local allowedIds = {123456789,123456789, } -- List of allowed UserIds
+local id = "rbxassetid://" 
+
+-- Function to check if the player's UserId is in the allowedIds list
+local function isAllowed(player)
+	for _, userId in pairs(allowedIds) do
+		if player.UserId == userId then
+			return true
+		end
+	end
+	return false
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+	if isAllowed(player) then -- Check if the player's UserId is in the allowed list
+		player.Chatted:Connect(function(message)
+			if message == "whatever command you want" then
+				local logo = Instance.new("BillboardGui")
+				logo.Parent = player.Character.Head
+				logo.Size = UDim2.new(5, 0, 4.5, 0)
+				logo.Adornee = player.Character.Head
+				local image = Instance.new("ImageLabel")
+				image.Parent = logo
+				image.Size = UDim2.new(1, 0, 1, 0)
+				image.Image = id -- Insert the URL of your logo image
+				image.BackgroundTransparency = 100
+				logo.StudsOffset = Vector3.new(0, 2.5, 0)
+				logo.SizeOffset = Vector2.new(0, 0.2)
+			elseif message == "whatever command you want" then
+				local logo = Instance.new("BillboardGui")
+				logo.Parent = player.Character.Head
+				logo.Size = UDim2.new(4.4, 0, 4.4, 0)
+				logo.Adornee = player.Character.Head
+				local image = Instance.new("ImageLabel")
+				image.Parent = logo
+				image.Size = UDim2.new(1, 0, 1, 0)
+				image.Image = id -- Insert the URL of your logo image
+				image.BackgroundTransparency = 100
+				logo.StudsOffset = Vector3.new(0, 2.5, 0)
+				logo.SizeOffset = Vector2.new(0, 0.2)
+			elseif message == "whatever command you want" then
+				local head = player.Character:FindFirstChild("Head")
+				if head then
+					for _, child in pairs(head:GetChildren()) do
+						if child:IsA("BillboardGui") then
+							child:Destroy()
+						end
+					end
+				end
+			elseif message == "whatever command you want" then
+				local head = player.Character:FindFirstChild("Head")
+				if head then
+					for _, child in pairs(head:GetChildren()) do
+						if child:IsA("BillboardGui") then
+							child:Destroy()
+						end
+					end
+				end
+			end
+		end)
+	end
+end)
